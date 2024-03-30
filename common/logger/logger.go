@@ -40,6 +40,7 @@ var levelMap = map[string]zapcore.Level{
 }
 
 type Config struct {
+	IsDevNull        bool
 	Level            string
 	Sampling         *SamplingConfig
 	AppendToStdout   bool
@@ -90,6 +91,7 @@ func init() {
 
 func BuildLoggerConfig(clientConfig constant.ClientConfig) Config {
 	loggerConfig := Config{
+		IsDevNull:      clientConfig.LogDir == "/dev/null",
 		Level:          clientConfig.LogLevel,
 		AppendToStdout: clientConfig.AppendToStdout,
 	}
@@ -100,16 +102,19 @@ func BuildLoggerConfig(clientConfig constant.ClientConfig) Config {
 			Tick:       clientConfig.LogSampling.Tick,
 		}
 	}
-	loggerConfig.LogRollingConfig = &lumberjack.Logger{
-		Filename: clientConfig.LogDir + string(os.PathSeparator) + constant.LOG_FILE_NAME,
-	}
-	logRollingConfig := clientConfig.LogRollingConfig
-	if logRollingConfig != nil {
-		loggerConfig.LogRollingConfig.MaxSize = logRollingConfig.MaxSize
-		loggerConfig.LogRollingConfig.MaxAge = logRollingConfig.MaxAge
-		loggerConfig.LogRollingConfig.MaxBackups = logRollingConfig.MaxBackups
-		loggerConfig.LogRollingConfig.LocalTime = logRollingConfig.LocalTime
-		loggerConfig.LogRollingConfig.Compress = logRollingConfig.Compress
+
+	if !loggerConfig.IsDevNull {
+		loggerConfig.LogRollingConfig = &lumberjack.Logger{
+			Filename: clientConfig.LogDir + string(os.PathSeparator) + constant.LOG_FILE_NAME,
+		}
+
+		if logRollingConfig := clientConfig.LogRollingConfig; logRollingConfig != nil {
+			loggerConfig.LogRollingConfig.MaxSize = logRollingConfig.MaxSize
+			loggerConfig.LogRollingConfig.MaxAge = logRollingConfig.MaxAge
+			loggerConfig.LogRollingConfig.MaxBackups = logRollingConfig.MaxBackups
+			loggerConfig.LogRollingConfig.LocalTime = logRollingConfig.LocalTime
+			loggerConfig.LogRollingConfig.Compress = logRollingConfig.Compress
+		}
 	}
 	return loggerConfig
 }
@@ -129,10 +134,14 @@ func InitLogger(config Config) (err error) {
 func InitNacosLogger(config Config) (Logger, error) {
 	logLevel := getLogLevel(config.Level)
 	encoder := getEncoder()
-	writer := config.getLogWriter()
-	if config.AppendToStdout {
-		writer = zapcore.NewMultiWriteSyncer(writer, zapcore.AddSync(os.Stdout))
+	writer := zapcore.AddSync(os.Stdout)
+	if !config.IsDevNull {
+		writer = config.getLogWriter()
+		if config.AppendToStdout {
+			writer = zapcore.NewMultiWriteSyncer(writer, zapcore.AddSync(os.Stdout))
+		}
 	}
+
 	core := zapcore.NewCore(zapcore.NewConsoleEncoder(encoder), writer, logLevel)
 	zaplogger := zap.New(core, zap.AddCaller(), zap.AddCallerSkip(1))
 	return &NacosLogger{zaplogger.Sugar()}, nil

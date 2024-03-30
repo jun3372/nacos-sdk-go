@@ -137,9 +137,10 @@ func InitNacosLogger(config Config) (Logger, error) {
 	writer := zapcore.AddSync(os.Stdout)
 	if !config.IsDevNull {
 		writer = config.getLogWriter()
-		if config.AppendToStdout {
-			writer = zapcore.NewMultiWriteSyncer(writer, zapcore.AddSync(os.Stdout))
-		}
+	}
+
+	if config.AppendToStdout {
+		writer = zapcore.NewMultiWriteSyncer(writer, zapcore.AddSync(os.Stdout))
 	}
 
 	core := zapcore.NewCore(zapcore.NewConsoleEncoder(encoder), writer, logLevel)

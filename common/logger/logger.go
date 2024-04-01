@@ -17,7 +17,9 @@
 package logger
 
 import (
+	"io"
 	"os"
+	"strings"
 	"sync"
 	"time"
 
@@ -43,6 +45,7 @@ type Config struct {
 	IsDevNull        bool
 	Level            string
 	Sampling         *SamplingConfig
+	LogFormat        string
 	AppendToStdout   bool
 	LogRollingConfig *lumberjack.Logger
 }
@@ -91,10 +94,12 @@ func init() {
 
 func BuildLoggerConfig(clientConfig constant.ClientConfig) Config {
 	loggerConfig := Config{
+		LogFormat:      clientConfig.LogFormat,
 		IsDevNull:      clientConfig.LogDir == "/dev/null",
 		Level:          clientConfig.LogLevel,
 		AppendToStdout: clientConfig.AppendToStdout,
 	}
+
 	if clientConfig.LogSampling != nil {
 		loggerConfig.Sampling = &SamplingConfig{
 			Initial:    clientConfig.LogSampling.Initial,
@@ -134,7 +139,7 @@ func InitLogger(config Config) (err error) {
 func InitNacosLogger(config Config) (Logger, error) {
 	logLevel := getLogLevel(config.Level)
 	encoder := getEncoder()
-	writer := zapcore.AddSync(os.Stdout)
+	writer := zapcore.AddSync(io.Discard)
 	if !config.IsDevNull {
 		writer = config.getLogWriter()
 	}
@@ -143,7 +148,12 @@ func InitNacosLogger(config Config) (Logger, error) {
 		writer = zapcore.NewMultiWriteSyncer(writer, zapcore.AddSync(os.Stdout))
 	}
 
-	core := zapcore.NewCore(zapcore.NewConsoleEncoder(encoder), writer, logLevel)
+	var encoderFn = zapcore.NewConsoleEncoder
+	if strings.ToLower(config.LogFormat) == "json" {
+		encoderFn = zapcore.NewJSONEncoder
+	}
+
+	core := zapcore.NewCore(encoderFn(encoder), writer, logLevel)
 	zaplogger := zap.New(core, zap.AddCaller(), zap.AddCallerSkip(1))
 	return &NacosLogger{zaplogger.Sugar()}, nil
 }

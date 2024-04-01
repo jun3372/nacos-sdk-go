@@ -51,6 +51,7 @@ type ClientConfig struct {
 	LogLevel             string                   // the level of log, it's must be debug,info,warn,error, default value is info
 	ContextPath          string                   // the nacos server contextpath
 	AppendToStdout       bool                     // if append log to stdout
+	LogFormat            string                   // Log format, must be console or json, default to console
 	LogSampling          *ClientLogSamplingConfig // the sampling config of log
 	LogRollingConfig     *ClientLogRollingConfig  // log rolling config
 	TLSCfg               TLSConfig                // tls Config

@@ -43,7 +43,6 @@ constant.ClientConfig {
 	UpdateCacheWhenEmpty bool   // update cache when get empty service instance from server
 	Username             string // the username for nacos auth
 	Password             string // the password for nacos auth
-	LogDir               string // the directory for log, default is current path
 	LogDir               string // Log storage path, to discard logs:/dev/null
     AppendToStdout       bool   // Log output to console
     LogFormat            string // Log output format, such as console, JSON, default to console

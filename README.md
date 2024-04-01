@@ -16,10 +16,10 @@ Supported Nacos version over 2.x
 
 ## Installation
 
-Use `go get` to install SDK：
+使用 `go get` to install SDK：
 
 ```sh
-$ go get -u github.com/nacos-group/nacos-sdk-go/v2
+$ go get -u github.com/jun3372/nacos-sdk-go
 ```
 
 ## Quick Examples

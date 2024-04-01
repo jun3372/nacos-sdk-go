@@ -44,6 +44,9 @@ constant.ClientConfig {
 	Username             string // the username for nacos auth
 	Password             string // the password for nacos auth
 	LogDir               string // the directory for log, default is current path
+	LogDir               string // Log storage path, to discard logs:/dev/null
+    AppendToStdout       bool   // Log output to console
+    LogFormat            string // Log output format, such as console, JSON, default to console
 	RotateTime           string // the rotate time for log, eg: 30m, 1h, 24h, default is 24h
 	MaxAge               int64  // the max age of a log file, default value is 3
 	LogLevel             string // the level of log, it's must be debug,info,warn,error, default value is info

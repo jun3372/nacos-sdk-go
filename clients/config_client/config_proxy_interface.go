@@ -3,11 +3,11 @@ package config_client
 import (
 	"context"
 
-	"github.com/nacos-group/nacos-sdk-go/v2/common/remote/rpc"
-	"github.com/nacos-group/nacos-sdk-go/v2/common/remote/rpc/rpc_request"
-	"github.com/nacos-group/nacos-sdk-go/v2/common/remote/rpc/rpc_response"
-	"github.com/nacos-group/nacos-sdk-go/v2/model"
-	"github.com/nacos-group/nacos-sdk-go/v2/vo"
+	"github.com/jun3372/nacos-sdk-go/common/remote/rpc"
+	"github.com/jun3372/nacos-sdk-go/common/remote/rpc/rpc_request"
+	"github.com/jun3372/nacos-sdk-go/common/remote/rpc/rpc_response"
+	"github.com/jun3372/nacos-sdk-go/model"
+	"github.com/jun3372/nacos-sdk-go/vo"
 )
 
 type IConfigProxy interface {

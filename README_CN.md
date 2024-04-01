@@ -16,7 +16,7 @@ Nacos-sdk-go是Nacos的Go语言客户端，它实现了服务发现和动态配�
 ## 安装
 使用`go get`安装SDK：
 ```sh
-$ go get -u github.com/nacos-group/nacos-sdk-go/v2
+$ go get -u github.com/jun3372/nacos-sdk-go
 ```
 ## 快速使用
 * ClientConfig
@@ -37,7 +37,9 @@ constant.ClientConfig{
 	UpdateCacheWhenEmpty bool   // 当service返回的实例列表为空时，不更新缓存，用于推空保护
 	Username             string // Nacos服务端的API鉴权Username
 	Password             string // Nacos服务端的API鉴权Password
-	LogDir               string // 日志存储路径
+	LogDir               string // 日志存储路径，如需丢弃日志：/dev/null
+    AppendToStdout       bool   // 日志输出到控制台
+    LogFormat            string // 日志输出格式，比如：console、json, 默认是 console
 	RotateTime           string // 日志轮转周期，比如：30m, 1h, 24h, 默认是24h
 	MaxAge               int64  // 日志最大文件数，默认3
 	LogLevel             string // 日志默认级别，值必须是：debug,info,warn,error，默认值是info

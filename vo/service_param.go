@@ -16,7 +16,7 @@
 
 package vo
 
-import "github.com/nacos-group/nacos-sdk-go/v2/model"
+import "github.com/jun3372/nacos-sdk-go/model"
 
 type RegisterInstanceParam struct {
 	Ip          string            `param:"ip"`          //required

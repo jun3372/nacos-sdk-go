@@ -24,11 +24,11 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/nacos-group/nacos-sdk-go/v2/clients/cache"
-	"github.com/nacos-group/nacos-sdk-go/v2/common/logger"
-	"github.com/nacos-group/nacos-sdk-go/v2/common/monitor"
-	"github.com/nacos-group/nacos-sdk-go/v2/model"
-	"github.com/nacos-group/nacos-sdk-go/v2/util"
+	"github.com/jun3372/nacos-sdk-go/clients/cache"
+	"github.com/jun3372/nacos-sdk-go/common/logger"
+	"github.com/jun3372/nacos-sdk-go/common/monitor"
+	"github.com/jun3372/nacos-sdk-go/model"
+	"github.com/jun3372/nacos-sdk-go/util"
 )
 
 type ServiceInfoHolder struct {

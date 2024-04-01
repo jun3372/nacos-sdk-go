@@ -28,13 +28,13 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/nacos-group/nacos-sdk-go/v2/common/remote/rpc/rpc_request"
-	"github.com/nacos-group/nacos-sdk-go/v2/common/remote/rpc/rpc_response"
+	"github.com/jun3372/nacos-sdk-go/common/remote/rpc/rpc_request"
+	"github.com/jun3372/nacos-sdk-go/common/remote/rpc/rpc_response"
 
-	nacos_grpc_service "github.com/nacos-group/nacos-sdk-go/v2/api/grpc"
-	"github.com/nacos-group/nacos-sdk-go/v2/common/constant"
-	"github.com/nacos-group/nacos-sdk-go/v2/common/logger"
-	"github.com/nacos-group/nacos-sdk-go/v2/common/nacos_server"
+	nacos_grpc_service "github.com/jun3372/nacos-sdk-go/api/grpc"
+	"github.com/jun3372/nacos-sdk-go/common/constant"
+	"github.com/jun3372/nacos-sdk-go/common/logger"
+	"github.com/jun3372/nacos-sdk-go/common/nacos_server"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/keepalive"
 )

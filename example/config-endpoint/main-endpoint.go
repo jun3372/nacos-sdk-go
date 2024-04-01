@@ -20,9 +20,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/nacos-group/nacos-sdk-go/v2/clients"
-	"github.com/nacos-group/nacos-sdk-go/v2/common/constant"
-	"github.com/nacos-group/nacos-sdk-go/v2/vo"
+	"github.com/jun3372/nacos-sdk-go/clients"
+	"github.com/jun3372/nacos-sdk-go/common/constant"
+	"github.com/jun3372/nacos-sdk-go/vo"
 )
 
 func main() {

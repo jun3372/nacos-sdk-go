@@ -25,20 +25,20 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/nacos-group/nacos-sdk-go/v2/common/monitor"
+	"github.com/jun3372/nacos-sdk-go/common/monitor"
 
-	"github.com/nacos-group/nacos-sdk-go/v2/common/remote/rpc"
-	"github.com/nacos-group/nacos-sdk-go/v2/common/remote/rpc/rpc_request"
-	"github.com/nacos-group/nacos-sdk-go/v2/common/remote/rpc/rpc_response"
+	"github.com/jun3372/nacos-sdk-go/common/remote/rpc"
+	"github.com/jun3372/nacos-sdk-go/common/remote/rpc/rpc_request"
+	"github.com/jun3372/nacos-sdk-go/common/remote/rpc/rpc_response"
 
-	"github.com/nacos-group/nacos-sdk-go/v2/clients/cache"
-	"github.com/nacos-group/nacos-sdk-go/v2/common/constant"
-	"github.com/nacos-group/nacos-sdk-go/v2/common/http_agent"
-	"github.com/nacos-group/nacos-sdk-go/v2/common/logger"
-	"github.com/nacos-group/nacos-sdk-go/v2/common/nacos_server"
-	"github.com/nacos-group/nacos-sdk-go/v2/model"
-	"github.com/nacos-group/nacos-sdk-go/v2/util"
-	"github.com/nacos-group/nacos-sdk-go/v2/vo"
+	"github.com/jun3372/nacos-sdk-go/clients/cache"
+	"github.com/jun3372/nacos-sdk-go/common/constant"
+	"github.com/jun3372/nacos-sdk-go/common/http_agent"
+	"github.com/jun3372/nacos-sdk-go/common/logger"
+	"github.com/jun3372/nacos-sdk-go/common/nacos_server"
+	"github.com/jun3372/nacos-sdk-go/model"
+	"github.com/jun3372/nacos-sdk-go/util"
+	"github.com/jun3372/nacos-sdk-go/vo"
 )
 
 type ConfigProxy struct {

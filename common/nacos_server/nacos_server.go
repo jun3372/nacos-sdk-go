@@ -33,17 +33,17 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/nacos-group/nacos-sdk-go/v2/common/remote/rpc/rpc_request"
+	"github.com/jun3372/nacos-sdk-go/common/remote/rpc/rpc_request"
 
-	"github.com/nacos-group/nacos-sdk-go/v2/common/monitor"
+	"github.com/jun3372/nacos-sdk-go/common/monitor"
 
-	"github.com/nacos-group/nacos-sdk-go/v2/common/constant"
-	"github.com/nacos-group/nacos-sdk-go/v2/common/http_agent"
-	"github.com/nacos-group/nacos-sdk-go/v2/common/logger"
-	"github.com/nacos-group/nacos-sdk-go/v2/common/nacos_error"
-	"github.com/nacos-group/nacos-sdk-go/v2/common/security"
-	"github.com/nacos-group/nacos-sdk-go/v2/inner/uuid"
-	"github.com/nacos-group/nacos-sdk-go/v2/util"
+	"github.com/jun3372/nacos-sdk-go/common/constant"
+	"github.com/jun3372/nacos-sdk-go/common/http_agent"
+	"github.com/jun3372/nacos-sdk-go/common/logger"
+	"github.com/jun3372/nacos-sdk-go/common/nacos_error"
+	"github.com/jun3372/nacos-sdk-go/common/security"
+	"github.com/jun3372/nacos-sdk-go/inner/uuid"
+	"github.com/jun3372/nacos-sdk-go/util"
 )
 
 type NacosServer struct {

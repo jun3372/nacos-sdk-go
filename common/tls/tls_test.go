@@ -21,7 +21,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/nacos-group/nacos-sdk-go/v2/common/constant"
+	"github.com/jun3372/nacos-sdk-go/common/constant"
 	"github.com/stretchr/testify/assert"
 )
 

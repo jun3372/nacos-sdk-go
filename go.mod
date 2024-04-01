@@ -1,5 +1,4 @@
-module github.com/nacos-group/nacos-sdk-go/v2
-
+module jun3372/nacos-sdk-go
 go 1.18
 
 require (
